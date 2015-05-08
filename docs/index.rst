@@ -3,6 +3,8 @@
 Welcome to django-styleguide documentation!
 ===========================================
 
+An app to manage a live style guide in your Django project.
+
 **Vision**
 
 * Develop an evolving foundation of base HTML/CSS patterns
