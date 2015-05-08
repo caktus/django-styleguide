@@ -1,9 +1,33 @@
 
 
-styleguide
+django-styleguide
 ========================
 
 Welcome to the documentation for django-styleguide!
+
+**Vision**
+
+* Develop an evolving foundation of base HTML/CSS patterns
+* They can be styled and extended to meet the needs of specific projects
+* The result, a live style guide, is embedded in the Django project and uses the project CSS
+* A complementary tool to django-comps, which is for building full pages
+
+**Goals**
+
+* Installed via a pluggable Django app
+    * Possible to add to existing projects
+* Accessible on staging server to show clients (e.g. /style-guide/)
+    * Bundled into the django-project-template
+    * Enabled automatically within the template
+* Uses project styles
+    * All simple Django templates
+    * Uses project CSS files directly so style guide and project run on same code
+* Easily extensible when adding new project patterns/widgets
+    * No URLs/views
+    * Just drop a new HTML/CSS template into a specific directory
+    * Style guide menu is auto generated from file structure and adds new menu items
+* Show how to use widgets
+    * Copy/pasteable code snippets with syntax highlighting
 
 
 Documentation
@@ -39,4 +63,4 @@ If you think you've found a bug or are interested in contributing to this projec
 check out `django-styleguide on Github <https://github.com/caktus/django-styleguide>`_.
 
 Development sponsored by `Caktus Consulting Group, LLC
-<http://www.caktusgroup.com/services>`_.
+<http://www.caktusgroup.com>`_.
