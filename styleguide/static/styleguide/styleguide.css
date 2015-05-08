@@ -1,0 +1,66 @@
+#styleguide-menu {
+    display: inline-block;
+    width: 19%;
+    background: #ddd;
+    padding: 10px;
+    border-box;
+    vertical-align: top;
+}
+#styleguide-menu ul {
+    list-style: none;
+}
+#styleguide-content {
+    display: inline-block;
+    width: 79%;
+}
+.styleguide-block {
+    background: #cca
+}
+pre {
+    padding:0;
+    margin: 5px;
+    border: 1px solid #f0f0f0;
+    borer-radius: 4px;
+    height: 100%;
+}
+pre>code.hljs {
+    padding:0;border:none;
+    margin: 5px;
+    background: none repeat scroll 0% 0% #F4F4F4
+}
+.styleguide-example {
+    margin: 5px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+.styleguide-example > div {
+    display: inline-block;
+    vertical-align: top;
+}
+.styleguide-demo {
+    width: 48%;
+    padding: 10px;
+    flex: grow;
+}
+.styleguide-code {
+    width: 48%;
+    flex: grow;
+}
+.styleguide-sep {
+    color: #ccc;
+    font-size: 40px;
+    vertical-align: middle;
+}
+.styleguide-sep>span {
+
+}
+#styleguide-content h4 {
+    margin-top: 25px;
+}
+.styleguide-status-unstyled::after {
+    content: "Unstyled";
+    font-style: italic;
+    margin-left: 1em;
+    color: red;
+}
