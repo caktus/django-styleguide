@@ -1,0 +1,10 @@
+*.sw[po]
+*.py[co]
+.project
+.pydevproject
+*~
+*.db
+*.orig
+*.DS_Store
+.coverage
+*.egg-info/
