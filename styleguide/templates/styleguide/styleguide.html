@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load styleguide_tags %}
 
 {% block content %}
 <link rel=stylesheet href="/static/styleguide/highlightjs/styles/github.css" />
@@ -61,20 +62,13 @@
     }
 </style>
 
+{% get_styleguide_templates as templates %}
+
 <nav id=styleguide-menu>
     <ul>
-    <li><a href="{% url "styleguide_page" "grid" %}">Grid System</a>
-    <li><a href="{% url "styleguide_page" "typography" %}">Typography</a>
-    <li>Form Elements
-    <li>Navigation
-    <li>Tables
-    <li>Lists
-    <li>Slats
-    <li>Stats/Data
-    <li>Feedback
-    <li>Dialogs
-    <li>Freddicons
-    <li>Helper Classes
+    {% for name, slug in templates %}
+        <li><a href="{% url "styleguide_page" slug %}">{{ name }}</a>
+    {% endfor %}
 </nav>
 
 <div id=styleguide-content>
