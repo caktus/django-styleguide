@@ -3,6 +3,7 @@ from django import template
 
 
 def get_styleguide_templates():
+    """Walk selected directories and pull out filenames"""
     template_paths = []
     for template_dir in get_styleguide_dirs():
         for (dirpath, dirnames, filenames) in os.walk(template_dir):
