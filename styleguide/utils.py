@@ -1,14 +1,20 @@
 import os
+import re
 from django import template
 
 
-def get_styleguide_templates():
-    """Walk selected directories and pull out filenames"""
-    template_paths = []
-    for template_dir in get_styleguide_dirs():
+def get_styleguide_templates(styleguide_dirs=None):
+    """Walk selected directories and pull out valid filenames"""
+    if not styleguide_dirs:
+        styleguide_dirs = get_styleguide_dirs()
+    template_paths = set()
+    for template_dir in styleguide_dirs:
         for (dirpath, dirnames, filenames) in os.walk(template_dir):
-            template_paths.extend(filenames)
-    return template_paths
+            for filename in filenames:
+                match = re.search(r'^styleguide-([\w-]+)\.html$', filename)
+                if match:
+                    template_paths.add(match.group(1))
+    return sorted(template_paths)
 
 
 def get_styleguide_dirs():
@@ -16,9 +22,7 @@ def get_styleguide_dirs():
     template_dirs = []
     engines = template.engines.all()
     for engine in engines:
-        # Reverse template_loaders to search apps first, followed by project
-        # templates, so the built-in styleguide templates are list first.
-        for loader in reversed(engine.engine.template_loaders):
+        for loader in engine.engine.template_loaders:
             for template_dir in loader.get_template_sources('styleguide'):
                 if os.path.isdir(template_dir):
                     template_dirs.append(template_dir)

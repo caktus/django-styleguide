@@ -1,5 +1,3 @@
-import re
-
 from textwrap import dedent
 
 from django import template
@@ -51,10 +49,7 @@ class ExampleNode(template.Node):
 def get_styleguide_templates():
     """Return tuples of (display name, slug) for found styleguide templates"""
     templates = []
-    for template_ in utils.get_styleguide_templates():
-        match = re.search(r'^styleguide-([\w-]+)\.html$', template_)
-        if match:
-            slug = match.group(1)
-            name = defaultfilters.title(slug.replace('-', ' '))
-            templates.append((name, slug))
+    for slug in utils.get_styleguide_templates():
+        name = defaultfilters.title(slug.replace('-', ' '))
+        templates.append((name, slug))
     return templates
