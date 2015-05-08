@@ -1,66 +1,11 @@
 {% extends "base.html" %}
-{% load styleguide_tags %}
+{% load styleguide_tags static %}
 
 {% block content %}
-<link rel=stylesheet href="/static/styleguide/highlightjs/styles/github.css" />
-<script src="/static/styleguide/highlightjs/highlight.pack.js"></script>
+<link rel=stylesheet href="{% static "styleguide/highlightjs/styles/github.css" %}"  />
+<link rel=stylesheet href="{% static "styleguide/styleguide.css" %}" />
+<script src="{% static "styleguide/highlightjs/highlight.pack.js" %}"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-<style>
-    #styleguide-menu {
-        display: inline-block;
-        width: 19%;
-        background: #ddd;
-        padding: 10px;
-        border-box;
-        vertical-align: top;
-    }
-    #styleguide-menu ul {
-        list-style: none;
-    }
-    #styleguide-content {
-        display: inline-block;
-        width: 79%;
-    }
-    .styleguide-block {
-        background: #cca
-    }
-    pre {
-        padding:0;
-        margin: 5px;
-        border: 1px solid #f0f0f0;
-        borer-radius: 4px;
-        height: 100%;
-    }
-    pre>code.hljs {
-        padding:0;border:none;
-        margin: 5px;
-        background: none repeat scroll 0% 0% #F4F4F4
-    }
-    .styleguide-example {
-        margin: 5px 0px;
-    }
-    .styleguide-example>div {
-        width: 45%;
-        display: inline-block;
-        vertical-align: top;
-    }
-    .styleguide-demo {
-        padding: 10px;
-    }
-    .styleguide-code {
-        margin-right: 40px;
-        height: 100%;
-        position: relative;
-    }
-    .styleguide-code::after {
-        content: "➵";
-        color: #ccc;
-        position: absolute;
-        right: -20px;
-        top: 0px;
-        font-size: 40px;
-    }
-</style>
 
 {% get_styleguide_templates as templates %}
 
