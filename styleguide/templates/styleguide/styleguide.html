@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    #styleguide-menu {
+        display: inline-block;
+        width: 19%;
+        background: #ddd;
+        padding: 10px;
+        border-box;
+        vertical-align: top;
+    }
+    #styleguide-menu ul {
+        list-style: none;
+    }
+    #styleguide-content {
+        display: inline-block;
+        width: 79%;
+    }
+    .styleguide-block {
+        background: #cca
+    }
+</style>
+
+<nav id=styleguide-menu>
+    <ul>
+    <li><a href="{% url "styleguide_page" "grid" %}">Grid System</a>
+    <li><a href="{% url "styleguide_page" "typography" %}">Typography</a>
+    <li>Form Elements
+    <li>Navigation
+    <li>Tables
+    <li>Lists
+    <li>Slats
+    <li>Stats/Data
+    <li>Feedback
+    <li>Dialogs
+    <li>Freddicons
+    <li>Helper Classes
+</nav>
+
+<div id=styleguide-content>
+    {% block styleguide_content %}{% endblock %}
+</div>
+
+<div style="clear:both;"></div>
+{% endblock %}
