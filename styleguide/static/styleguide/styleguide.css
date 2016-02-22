@@ -55,7 +55,7 @@ pre>code.hljs {
 .styleguide-sep>span {
 
 }
-#styleguide-content h4 {
+#styleguide-content > h4 {
     margin-top: 25px;
 }
 .styleguide-status-unstyled::after {
