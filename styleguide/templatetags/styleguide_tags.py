@@ -37,7 +37,7 @@ class ExampleNode(template.Node):
     def render(self, context):
         return self.do_render(*self.args, **self.kwargs)
 
-    def do_render(self, header="", lang='html', status=None):
+    def do_render(self, header="", lang='html', status=None, wide=False):
         output = []
 
         code = self.nodelist.render({})
@@ -45,24 +45,28 @@ class ExampleNode(template.Node):
 
 
         if header or status:
-            output.append("<h4 class='%s'>%s</h4>" % (
-                (" styleguide-status-"+status if status else ""),
+            output.append('<h4 class="%s">%s</h4>' % (
+                (' styleguide-status-'+status if status else ''),
                 header,
             ))
-        output.append("<div class=styleguide-example>")
-        output.append("<div class=styleguide-code>")
+        classes = ['styleguide-example']
+        if wide:
+            classes.append('styleguide-example-wide')
+        classes = ' '.join(classes)
+        output.append('<div class="%s">' % classes)
+        output.append('<div class=styleguide-code>')
 
-        output.append("<pre><code class=%s>" %  lang)
+        output.append('<pre><code class=%s>' %  lang)
         output.append(defaultfilters.force_escape(code))
-        output.append("</code></pre>")
+        output.append('</code></pre>')
 
-        output.append("</div>")
-        output.append("<div class=styleguide-sep><span>➵</span></div>")
-        output.append("<div class=styleguide-demo>")
+        output.append('</div>')
+        output.append('<div class=styleguide-sep><span>➵</span></div>')
+        output.append('<div class=styleguide-demo>')
 
         output.append(code)
 
-        output.append("</div></div>")
+        output.append('</div></div>')
 
         return ''.join(output)
 

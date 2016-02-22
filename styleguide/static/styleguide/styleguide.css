@@ -39,12 +39,12 @@ pre>code.hljs {
     vertical-align: top;
 }
 .styleguide-demo {
-    width: 48%;
+    flex-basis: 48%;
     padding: 10px;
     flex: grow;
 }
 .styleguide-code {
-    width: 48%;
+    flex-basis: 48%;
     flex: grow;
 }
 .styleguide-sep {
@@ -55,6 +55,23 @@ pre>code.hljs {
 .styleguide-sep>span {
 
 }
+
+/* wide */
+.styleguide-example-wide {
+    flex-direction: column;
+}
+.styleguide-example-wide > * {
+    flex-basis: 100%;
+}
+.styleguide-example-wide > .styleguide-sep {
+    text-align: center;
+    margin-top: 20px;
+}
+.styleguide-example-wide > .styleguide-sep > span {
+    transform: rotateZ(90deg);
+    display: inline-block;
+}
+
 #styleguide-content h4 {
     margin-top: 25px;
 }
