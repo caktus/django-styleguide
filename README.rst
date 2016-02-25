@@ -34,12 +34,12 @@ Documentation
 -----------------------------------
 
 Styleguide provides both a mechanism to create styleguides for areas of your website or types of
-elements in your design and also provides a few started styleguides. To use the starter styleguides,
+elements in your design and also provides a few starter styleguides. To use the starter styleguides,
 first see which ones are present.
 
     python manage.py listpatterns
 
-The `listpatterns` command will give you a list of the styleguides that come form
+The `listpatterns` command will give you a list of the styleguides that come from
 `django-styleguide` itself. If you want to customize any of these, you can use the `copypattern`
 command to copy it into your own project.
 
