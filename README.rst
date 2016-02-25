@@ -1,18 +1,18 @@
-
-
 django-styleguide
 ========================
 
 Welcome to the documentation for django-styleguide!
 
-**Vision**
+Vision
+------
 
 * Develop an evolving foundation of base HTML/CSS patterns
 * They can be styled and extended to meet the needs of specific projects
 * The result, a live style guide, is embedded in the Django project and uses the project CSS
 * A complementary tool to django-comps, which is for building full pages
 
-**Goals**
+Goals
+-----
 
 * Installed via a pluggable Django app
     * Possible to add to existing projects
