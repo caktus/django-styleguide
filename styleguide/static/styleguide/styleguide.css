@@ -1,3 +1,8 @@
+#styleguide-header {
+    background: #ddd;
+    margin-bottom: 0px;
+    height: 70px;
+}
 #styleguide-menu {
     display: inline-block;
     width: 19%;
@@ -5,6 +10,7 @@
     padding: 10px;
     border-box;
     vertical-align: top;
+    padding-bottom: 200px;
 }
 #styleguide-menu ul {
     list-style: none;
@@ -72,7 +78,7 @@ pre>code.hljs {
     display: inline-block;
 }
 
-#styleguide-content h4 {
+#styleguide-content > h4 {
     margin-top: 25px;
 }
 .styleguide-status-unstyled::after {
