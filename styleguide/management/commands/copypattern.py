@@ -17,6 +17,8 @@ class Command(LabelCommand):
         except (KeyError, IndexError):
             raise CommandError("Project template DIRS not found")
         dest_dir = os.path.join(project_templates, "styleguide")
+        if not os.path.exists(dest_dir):
+            os.makedirs(dest_dir)
         dest_path = os.path.join(dest_dir, source_name)
         if os.path.isfile(dest_path):
             raise CommandError("{} already exists".format(dest_path))
