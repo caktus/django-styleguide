@@ -2,6 +2,7 @@
 import sys
 
 from django.conf import settings
+from django import setup
 
 
 if not settings.configured:
@@ -24,6 +25,7 @@ from django.test.utils import get_runner
 
 
 def runtests():
+    setup()
     TestRunner = get_runner(settings)
     test_runner = TestRunner(verbosity=1, interactive=True, failfast=False)
     failures = test_runner.run_tests(['styleguide', ])
@@ -32,4 +34,3 @@ def runtests():
 
 if __name__ == '__main__':
     runtests()
-

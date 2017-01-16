@@ -24,6 +24,6 @@ def get_styleguide_dirs():
     for engine in engines:
         for loader in engine.engine.template_loaders:
             for template_dir in loader.get_template_sources('styleguide'):
-                if os.path.isdir(template_dir):
-                    template_dirs.append(template_dir)
+                if os.path.isdir(str(template_dir)):
+                    template_dirs.append(str(template_dir))
     return template_dirs
