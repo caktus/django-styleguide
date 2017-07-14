@@ -40,7 +40,7 @@ class ExampleNode(template.Node):
     def do_render(self, header="", lang='html', status=None, wide=False):
         output = []
 
-        code = self.nodelist.render({})
+        code = self.nodelist.render(template.Context({}))
         code = dedent(code).strip()
 
 
