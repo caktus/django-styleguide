@@ -43,6 +43,11 @@ class ExampleNode(template.Node):
         code = self.nodelist.render(template.Context({}))
         code = dedent(code).strip()
 
+        if '<!-- HTML -->' in code:
+            html = code.split('<!-- HTML -->', 1)[1]
+        else:
+            html = code
+
 
         if header or status:
             output.append('<h4 class="%s">%s</h4>' % (
@@ -64,7 +69,7 @@ class ExampleNode(template.Node):
         output.append('<div class=styleguide-sep><span>➵</span></div>')
         output.append('<div class=styleguide-demo>')
 
-        output.append(code)
+        output.append(html)
 
         output.append('</div></div>')
 
