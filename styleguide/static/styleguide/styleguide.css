@@ -64,10 +64,10 @@ pre>code.hljs {
 
 /* wide */
 .styleguide-example-wide {
-    flex-direction: column;
+    display: block;
 }
 .styleguide-example-wide > * {
-    flex-basis: 100%;
+    width: 100%;
 }
 .styleguide-example-wide > .styleguide-sep {
     text-align: center;
