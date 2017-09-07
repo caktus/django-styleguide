@@ -1,3 +1,8 @@
+1.2.1 Released September 7, 2017
+--------------------------------
+
+* Fixed an IE11 layout bug for wide examples
+
 1.2.0 Released September 7, 2017
 --------------------------------
 
