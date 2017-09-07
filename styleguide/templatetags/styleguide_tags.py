@@ -48,7 +48,6 @@ class ExampleNode(template.Node):
         else:
             html = code
 
-
         if header or status:
             output.append('<h4 class="%s">%s</h4>' % (
                 (' styleguide-status-'+status if status else ''),

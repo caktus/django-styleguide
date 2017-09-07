@@ -1,3 +1,8 @@
+1.2.0 Released September 7, 2017
+--------------------------------
+
+* Added option to include and extract styles in examples
+
 1.0.0 Released January 17, 2017
 -------------------------------
 
