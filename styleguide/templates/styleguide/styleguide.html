@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load styleguide_tags static %}
 
-{% block head_content %}
+{% block extra-css %}
     <link rel=stylesheet href="{% static "styleguide/highlightjs/styles/github.css" %}"  />
     <link rel=stylesheet href="{% static "styleguide/styleguide.css" %}" />
 {% endblock %}
@@ -44,7 +44,7 @@
     <footer id="styleguide-footer">
     </footer>
 
-    {% block script_content%}
+    {% block extra-js%}
     <script src="{% static "styleguide/highlightjs/highlight.pack.js" %}"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     {% endblock %}
