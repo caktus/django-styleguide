@@ -9,7 +9,7 @@ from django.template.backends.django import DjangoTemplates
 from django.core.management.base import BaseCommand
 
 # Regex matching all JSX blocks in a template
-R_EXAMPLE = re.compile(r'\{% *example.*%\}(.*?)\{% *endexample *%\}', re.DOTALL)
+R_EXAMPLE = re.compile(r'\{% *?example.*?%\}(.*?)\{% *?endexample *?%\}', re.DOTALL)
 R_SECTION = re.compile(r'<!-- Stylus -->(.*?)<!--', re.DOTALL)
 
 
