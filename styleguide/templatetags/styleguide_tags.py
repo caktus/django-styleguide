@@ -48,6 +48,13 @@ class ExampleNode(template.Node):
         else:
             html = code
 
+        if '<!-- DOCS -->' in code:
+            docs_and_rest = code.split('<!-- DOCS -->', 1)[1]
+            docs = docs_and_rest.split('<!-- ', 1)[0]
+            code = '<!-- ' + docs_and_rest.split('<!-- ', 1)[1]
+        else:
+            docs = None
+
         if header or status:
             output.append('<h4 class="%s">%s</h4>' % (
                 (' styleguide-status-'+status if status else ''),
@@ -58,6 +65,12 @@ class ExampleNode(template.Node):
             classes.append('styleguide-example-wide')
         classes = ' '.join(classes)
         output.append('<div class="%s">' % classes)
+
+        if docs:
+            output.append('<div class=styleguide-docs>')
+            output.append(docs)
+            output.append('</div>')
+
         output.append('<div class=styleguide-code>')
 
         output.append('<pre><code class=%s>' %  lang)

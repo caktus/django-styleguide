@@ -16,6 +16,7 @@ pre>code.hljs {
 .styleguide-example {
     margin: 50px 0px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: stretch;
 }
@@ -27,6 +28,11 @@ pre>code.hljs {
     flex-basis: 48%;
     padding: 10px;
     flex: grow;
+}
+.styleguide-docs {
+    flex-basis: 100%;
+    flex: grow;
+    margin-bottom: 25px;
 }
 .styleguide-code {
     flex-basis: 48%;
