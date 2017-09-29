@@ -6,7 +6,6 @@ pre {
     margin: 5px;
     border: 1px solid #f0f0f0;
     borer-radius: 4px;
-    height: 100%;
 }
 pre>code.hljs {
     padding:0;border:none;
@@ -27,16 +26,16 @@ pre>code.hljs {
 .styleguide-demo {
     flex-basis: 48%;
     padding: 10px;
-    flex: grow;
+    flex-grow: 1;
 }
 .styleguide-docs {
     flex-basis: 100%;
-    flex: grow;
+    flex-grow: 1;
     margin-bottom: 25px;
 }
 .styleguide-code {
     flex-basis: 48%;
-    flex: grow;
+    flex-grow: 1;
 }
 .styleguide-sep {
     color: #ccc;
