@@ -8,9 +8,13 @@ pre {
     borer-radius: 4px;
 }
 pre>code.hljs {
-    padding:0;border:none;
+    padding:0;
+    border:none;
     margin: 5px;
-    background: none repeat scroll 0% 0% #F4F4F4
+    padding: 5px;
+    background: none repeat scroll 0% 0% #F4F4F4;
+    font-family: monospace;
+    white-space: pre-wrap;
 }
 .styleguide-example {
     margin: 50px 0px;
@@ -36,6 +40,12 @@ pre>code.hljs {
 .styleguide-code {
     flex-basis: 48%;
     flex-grow: 1;
+}
+.styleguide-code h4 {
+    font-family: monospace;
+    color: grey;
+    font-weight: 100;
+    margin-left: 10px;
 }
 .styleguide-sep {
     color: #ccc;
