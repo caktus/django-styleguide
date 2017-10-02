@@ -79,5 +79,6 @@ def compile_templates(template_list, output=None):
 
                 if "<!-- HTML -->" in block:
                     block = re.findall(R_SECTION, block)
-                    block = block[0].strip()
-                    print(block, file=output)
+                    if block:
+                        block = block[0].strip()
+                        print(block, file=output)

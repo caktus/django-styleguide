@@ -43,17 +43,10 @@ class ExampleNode(template.Node):
         code = self.nodelist.render(template.Context({}))
         code = dedent(code).strip()
 
-        if '<!-- HTML -->' in code:
-            html = code.split('<!-- HTML -->', 1)[1]
-        else:
-            html = code
+        sections = utils.get_example_sections(code)
 
-        if '<!-- DOCS -->' in code:
-            docs_and_rest = code.split('<!-- DOCS -->', 1)[1]
-            docs = docs_and_rest.split('<!-- ', 1)[0]
-            code = '<!-- ' + docs_and_rest.split('<!-- ', 1)[1]
-        else:
-            docs = None
+        html = sections['HTML']
+        docs = sections.get('DOCS', None)
 
         if header or status:
             output.append('<h4 class="%s">%s</h4>' % (
@@ -73,9 +66,14 @@ class ExampleNode(template.Node):
 
         output.append('<div class=styleguide-code>')
 
-        output.append('<pre><code class=%s>' %  lang)
-        output.append(defaultfilters.force_escape(code))
-        output.append('</code></pre>')
+        output.append('<pre>')
+        for lang, body in sections.items():
+            if lang != "DOCS":
+                output.append('<h4>%s</h4>' % lang)
+                output.append('<code class=%s>' % lang)
+                output.append(defaultfilters.force_escape(body))
+                output.append('</code>')
+        output.append('</pre>')
 
         output.append('</div>')
         output.append('<div class=styleguide-sep><span>➵</span></div>')

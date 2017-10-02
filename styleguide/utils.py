@@ -27,3 +27,19 @@ def get_styleguide_dirs():
                 if os.path.isdir(str(template_dir)):
                     template_dirs.append(str(template_dir))
     return template_dirs
+
+def get_example_sections(example):
+    """Parses a multipart example and returns them in a dictionary by type.
+
+    Types will be by language to highlight, except the special "__doc__"
+    section. The default section is "html".
+    """
+
+    parts = re.split(r'<!-- (.*) -->', example)
+    del parts[0]
+    i = iter(parts)
+
+    sections = {}
+    for lang, code in zip(i, i):
+        sections[lang] = code.strip()
+    return sections
