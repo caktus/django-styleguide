@@ -45,7 +45,14 @@ class ExampleNode(template.Node):
 
         sections = utils.get_example_sections(code)
 
-        html = sections['HTML']
+        if 'HTML' in sections:
+            html = sections['HTML']
+        elif len(sections) == 0:
+            html = code
+            sections['HTML'] = code
+        else:
+            raise ValueError("{% example %} must have exactly 1 or an HTML entry.")
+
         docs = sections.get('DOCS', None)
 
         if header or status:

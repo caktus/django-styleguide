@@ -15,6 +15,7 @@ pre>code.hljs {
     padding: 5px;
     background: none repeat scroll 0% 0% #F4F4F4;
     font-family: monospace;
+    white-space: pre-wrap;
 }
 .styleguide-example {
     margin: 50px 0px;
