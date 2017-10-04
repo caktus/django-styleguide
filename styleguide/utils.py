@@ -7,14 +7,24 @@ def get_styleguide_templates(styleguide_dirs=None):
     """Walk selected directories and pull out valid filenames"""
     if not styleguide_dirs:
         styleguide_dirs = get_styleguide_dirs()
-    template_paths = set()
+    template_paths = {}
+    sub_template_paths = []
     for template_dir in styleguide_dirs:
         for (dirpath, dirnames, filenames) in os.walk(template_dir):
             for filename in filenames:
                 match = re.search(r'^styleguide-([\w-]+)\.html$', filename)
                 if match:
-                    template_paths.add(match.group(1))
-    return sorted(template_paths)
+                    if '-' not in match.group(1):
+                        template_paths[match.group(1)] = []
+                    else:
+                        sub_menu_item = match.group(1).split('-')
+                        sub_template_paths.append(sub_menu_item)
+
+    for sub in sub_template_paths:
+        if sub[0] in template_paths:
+            template_paths[sub[0]].append(sub[1])
+
+    return template_paths
 
 
 def get_styleguide_dirs():
