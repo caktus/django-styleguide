@@ -102,3 +102,8 @@ def get_styleguide_templates():
         templates.append((name, slug, sub_slugs))
 
     return templates
+
+@register.assignment_tag
+def open_menu(path, sub_slugs):
+    return path.split('/')[2] in sub_slugs
+
