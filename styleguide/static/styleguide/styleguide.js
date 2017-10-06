@@ -10,7 +10,9 @@ var toggle = function(el){
 var toggleMenus = document.getElementsByClassName('toggle-menu')
 Array.prototype.forEach.call(toggleMenus, function(el) {
 	el.onclick = function(){
-		toggle(this)
+        if(this.nextElementSibling.querySelectorAll('.selected').length == 0){
+            toggle(this)
+        }
 	}
 })
 
