@@ -13,6 +13,9 @@
     <header id="styleguide-header">
         <div class="styleguide-header-left">
             <img src ="{% static "img/logo4.png" %}">
+            <button id="hamburger">
+                <img class="devices" src ="{% static "img/hamburger.png" %}">
+            </button>
         </div>
         <div class="styleguide-header-right">
             <div class="devices">
@@ -23,16 +26,22 @@
             </div>
         </div>
     </header>
-    <button id="hamburger" class="close">
-        <img class="devices" src ="{% static "img/close.png" %}">
-    </button>
-    <button id="hamburger">
-        <img class="devices" src ="{% static "img/hamburger.png" %}">
-    </button>
     <nav id=styleguide-menu>
         <ul>
-        {% for name, slug in templates %}
-            <li><a href="{% url "styleguide_page" slug %}">{{ name }}</a>
+        {% for name, slug, sub_slugs in templates %}
+            <li>
+                <a href="{% url "styleguide_page" slug %}">{{ name }}</a>
+                {% if sub_slugs %}
+                    <span class="toggle-menu"></span>
+                    <ul class="sub-menu">
+                        {% for s in sub_slugs%}
+                            <li>
+                                <a href="{% url "styleguide_sub_page" slug s %}">{{ s|title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
         {% endfor %}
     </nav>
     <main>
@@ -47,6 +56,7 @@
     {% block extra-js%}
     <script src="{% static "styleguide/highlightjs/highlight.pack.js" %}"></script>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script src="{% static "styleguide/styleguide.js" %}"></script>
     {% endblock %}
 
 {% endblock %}

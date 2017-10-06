@@ -97,7 +97,8 @@ class ExampleNode(template.Node):
 def get_styleguide_templates():
     """Return tuples of (display name, slug) for found styleguide templates"""
     templates = []
-    for slug in utils.get_styleguide_templates():
+    for slug, sub_slugs in utils.get_styleguide_templates().items():
         name = defaultfilters.title(slug.replace('-', ' '))
-        templates.append((name, slug))
+        templates.append((name, slug, sub_slugs))
+
     return templates
