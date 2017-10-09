@@ -29,14 +29,17 @@
     <nav id=styleguide-menu>
         <ul>
         {% for name, slug, sub_slugs in templates %}
-            <li>
-                <a href="{% url "styleguide_page" slug %}">{{ name }}</a>
+            {% url "styleguide_page" slug as path %}
+            <li class="{% if request.path == path %}selected{% endif%}">
+                <a href="{{ path }}">{{ name }}</a>
                 {% if sub_slugs %}
-                    <span class="toggle-menu"></span>
+                    {% open_menu request.path slug sub_slugs as open %}
+                    <span class="toggle-menu {% if open %}open{%endif%}"></span>
                     <ul class="sub-menu">
                         {% for s in sub_slugs%}
-                            <li>
-                                <a href="{% url "styleguide_sub_page" slug s %}">{{ s|title }}</a>
+                            {% url "styleguide_sub_page" slug s as sub_path%}
+                            <li class="{% if request.path == sub_path %}selected{%endif%}">
+                                <a href="{{ sub_path }}">{{ s|title }}</a>
                             </li>
                         {% endfor %}
                     </ul>
