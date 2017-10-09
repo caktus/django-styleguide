@@ -33,7 +33,7 @@
             <li class="{% if request.path == path %}selected{% endif%}">
                 <a href="{{ path }}">{{ name }}</a>
                 {% if sub_slugs %}
-                    {% open_menu request.path sub_slugs as open %}
+                    {% open_menu request.path slug sub_slugs as open %}
                     <span class="toggle-menu {% if open %}open{%endif%}"></span>
                     <ul class="sub-menu">
                         {% for s in sub_slugs%}
