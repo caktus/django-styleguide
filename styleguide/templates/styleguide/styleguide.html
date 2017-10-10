@@ -30,7 +30,8 @@
         <ul>
         {% for name, slug, sub_slugs in templates %}
             {% url "styleguide_page" slug as path %}
-            <li class="{% if request.path == path %}selected{% endif%}">
+            {% open_menu request.path slug as open_parent %}
+            <li class="{% if request.path == path %}selected {% endif%}{% if open_parent %}open{% endif %}">
                 <a href="{{ path }}">{{ name }}</a>
                 {% if sub_slugs %}
                     {% open_menu request.path slug sub_slugs as open %}

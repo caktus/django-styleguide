@@ -104,7 +104,12 @@ def get_styleguide_templates():
     return templates
 
 @register.assignment_tag
-def open_menu(path, slug, sub_slugs):
+def open_menu(path, slug, sub_slugs=None):
     if path.count('/') != 1:
-        return path.split('/')[1] == slug or path.split('/')[2] in sub_slugs
+        if sub_slugs:
+            return path.split('/')[1] == slug or path.split('/')[2] in sub_slugs
+        else:
+            return path.split('/')[1] == slug
+
+
 
