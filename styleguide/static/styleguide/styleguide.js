@@ -6,16 +6,6 @@ var toggle = function(el){
 	}
 }
 
-// toggle sub_menus
-var toggleMenus = document.getElementsByClassName('toggle-menu')
-Array.prototype.forEach.call(toggleMenus, function(el) {
-	el.onclick = function(){
-        if(this.nextElementSibling.querySelectorAll('.selected').length == 0){
-            toggle(this)
-        }
-	}
-})
-
 var hamburger = document.getElementById('hamburger')
 hamburger.onclick = function(event){
 
