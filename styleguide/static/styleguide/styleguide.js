@@ -6,6 +6,20 @@ var toggle = function(el){
 	}
 }
 
+var ripple = function(el){
+	el.onclick = function(event){
+		el.classList.add('run')
+		setTimeout(function(){
+			el.classList.remove('run')
+		}, 1000)
+	}
+}
+
+var ripples = document.getElementsByClassName('ripple');
+for(var i = 0; i < ripples.length; i++) {
+	ripple(ripples[i])
+}
+
 var hamburger = document.getElementById('hamburger')
 hamburger.onclick = function(event){
 
