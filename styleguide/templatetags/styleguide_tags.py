@@ -111,5 +111,6 @@ def open_menu(path, slug, sub_slugs=None):
         else:
             return path.split('/')[1] == slug
 
-
-
+@register.filter
+def make_space(str):
+    return str.replace('_', ' ')

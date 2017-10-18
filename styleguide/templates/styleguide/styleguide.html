@@ -32,7 +32,7 @@
             {% url "styleguide_page" slug as path %}
             {% open_menu request.path slug as open_parent %}
             <li class="{% if request.path == path %}selected {% endif%}{% if open_parent %}open{% endif %}">
-                <a href="{{ path }}">{{ name }}</a>
+                <a href="{{ path }}">{{ name|make_space }}</a>
                 {% if sub_slugs %}
                     {% open_menu request.path slug sub_slugs as open %}
                     <span class="toggle-menu {% if open %}open{%endif%}"></span>
@@ -40,7 +40,7 @@
                         {% for s in sub_slugs%}
                             {% url "styleguide_sub_page" slug s as sub_path%}
                             <li class="{% if request.path == sub_path %}selected{%endif%}">
-                                <a href="{{ sub_path }}">{{ s|title }}</a>
+                                <a href="{{ sub_path }}">{{ s|title|make_space }}</a>
                             </li>
                         {% endfor %}
                     </ul>
