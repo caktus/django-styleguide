@@ -105,11 +105,15 @@ def get_styleguide_templates():
 
 @register.assignment_tag
 def open_menu(path, slug, sub_slugs=None):
+    path_list = list(filter(None, path.split('/')))
     if path.count('/') != 1:
         if sub_slugs:
-            return path.split('/')[1] == slug or path.split('/')[2] in sub_slugs
+            if len(path_list) >= 2:
+                return path_list[-2] == slug and path_list[-1] in sub_slugs
+            else:
+                return path_list[-1] == slug
         else:
-            return path.split('/')[1] == slug
+            return False
 
 @register.filter
 def make_space(str):
