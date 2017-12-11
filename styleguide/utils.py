@@ -49,7 +49,13 @@ def get_example_sections(example):
     del parts[0]
     i = iter(parts)
 
+    # print("Parsing sections...")
+    # print(example)
+    # print("----")
+
     sections = {}
     for lang, code in zip(i, i):
         sections[lang] = code.strip()
+        # print(lang)
+    # print("----")
     return sections
