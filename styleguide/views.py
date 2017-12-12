@@ -16,6 +16,7 @@ class ExampleForm(forms.Form):
 form_initial = {
     "text": "",
     "disabled_text": "This field can't be changed",
+    "readonly_text": "This field is read only",
 }
 
 
