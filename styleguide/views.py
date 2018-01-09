@@ -1,9 +1,20 @@
+import os
+
 from django.shortcuts import get_object_or_404, render
+from django.conf import settings
+
+import markdown
+
 from .forms import EverythingBagelForm, everything_bagel_form_initial, CreateUserForm, create_user_form_initial
 
 def styleguide(request):
+    path = os.path.join(settings.BASE_DIR, 'README.md')
+    if os.path.exists(path):
+        contents = open(path).read()
+    else:
+        contents = ""
     return render(request, "styleguide/styleguide.html", {
-
+        "contents": contents,
     })
 
 def styleguide_page(request, name):

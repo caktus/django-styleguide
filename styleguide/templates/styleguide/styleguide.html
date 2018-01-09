@@ -51,7 +51,7 @@
     <main>
         <div id="styleguide-content-spacer"></div>
         <div id=styleguide-content>
-            {% block styleguide_content %}{% endblock %}
+            {% block styleguide_content %}{{ contents|safe }}{% endblock %}
         </div>
     </main>
     <footer id="styleguide-footer">

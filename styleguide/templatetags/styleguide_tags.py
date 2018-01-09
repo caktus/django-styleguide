@@ -23,6 +23,10 @@ def do_example(parser, token):
     parser_copy.tags = dict(parser.tags)
     parser_copy.filters = dict(parser.filters)
 
+    tag_name, *args = token.split_contents()
+    args = list(args)
+    kwargs = {}
+
     # Parse the verbatim copy
     text = []
     while 1:
@@ -48,10 +52,10 @@ def do_example(parser, token):
     # Reset to the original parser which hasn't been consumed from yet
     parser = parser_copy
 
-    # Consume from this parser to create the example node we can render
-    tag_name, *args = token.split_contents()
-    args = list(args)
-    kwargs = {}
+    # # Consume from this parser to create the example node we can render
+    # tag_name, *args = token.split_contents()
+    # args = list(args)
+    # kwargs = {}
 
     # Parse arguments used in the tag...
     def decode(value):
