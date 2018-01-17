@@ -52,4 +52,5 @@ def get_example_sections(example):
     sections = {}
     for lang, code in zip(i, i):
         sections[lang] = code.strip()
+        # assert lang != 'TEMPLATE', example
     return sections

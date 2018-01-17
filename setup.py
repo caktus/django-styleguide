@@ -23,6 +23,9 @@ setup(
         'Development Status :: 4 - Beta',
         'Operating System :: OS Independent',
     ],
+    install_requires=[
+        'bs4',
+    ],
     #long_description=open('README.rst').read(),
     zip_safe=False, # because we're including media that Django needs
 )

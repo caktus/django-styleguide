@@ -1,5 +1,7 @@
 from textwrap import dedent, indent
 
+from bs4 import BeautifulSoup
+
 from django import template
 from django.template.base import Context
 from django.template import defaultfilters
@@ -34,16 +36,16 @@ def do_example(parser, token):
         if token.contents == 'endexample':
             break
         if token.token_type == template.base.TOKEN_VAR:
-            text.append('{{')
+            text.append('{{ ')
         elif token.token_type == template.base.TOKEN_BLOCK:
-            text.append('{%')
+            text.append('{% ')
         elif token.token_type == template.base.TOKEN_COMMENT:
             text.append('{# ')
         text.append(token.contents)
         if token.token_type == template.base.TOKEN_VAR:
-            text.append('}}')
+            text.append(' }}')
         elif token.token_type == template.base.TOKEN_BLOCK:
-            text.append('%}')
+            text.append(' %}')
         elif token.token_type == template.base.TOKEN_COMMENT:
             text.append(' #}')
     # return ExampleNode(nodelist.render(Context({})), (), {}, nodelist)
@@ -51,11 +53,6 @@ def do_example(parser, token):
 
     # Reset to the original parser which hasn't been consumed from yet
     parser = parser_copy
-
-    # # Consume from this parser to create the example node we can render
-    # tag_name, *args = token.split_contents()
-    # args = list(args)
-    # kwargs = {}
 
     # Parse arguments used in the tag...
     def decode(value):
@@ -127,9 +124,19 @@ class ExampleNode(template.Node):
         # assert 0, parts
         for lang, body in parts:
             if lang != "DOCS":
+                if lang == 'HTML':
+                    body = BeautifulSoup(body, 'html.parser').prettify()
                 output.append('<h4>%s</h4>' % lang)
                 output.append('<code class=%s>' % lang)
-                output.append(defaultfilters.force_escape(body))
+                lines = body.split('\n')
+                for line in lines:
+                    line_stripped = line.strip(' ')
+                    indent = len(line) - len(line_stripped)
+                    if lang == 'HTML':
+                        indent *= 4
+                    output.append('<span style="display: block; padding-left: %sch">' % indent)
+                    output.append(defaultfilters.force_escape(line_stripped) or ' ')
+                    output.append('</span>')
                 output.append('</code>')
         output.append('</pre>')
 
