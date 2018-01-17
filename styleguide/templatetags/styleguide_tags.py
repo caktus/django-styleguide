@@ -148,6 +148,8 @@ def get_styleguide_templates():
         name = defaultfilters.title(slug.replace('-', ' '))
         templates.append((name, slug, sub_slugs))
 
+    templates.sort()
+
     return templates
 
 @register.assignment_tag
