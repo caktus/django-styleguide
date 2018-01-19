@@ -14,7 +14,7 @@ def styleguide(request):
     else:
         contents = ""
     return render(request, "styleguide/styleguide.html", {
-        "contents": contents,
+        "contents": markdown.markdown(contents),
     })
 
 def styleguide_page(request, name):

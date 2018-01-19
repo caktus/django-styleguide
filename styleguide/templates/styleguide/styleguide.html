@@ -29,8 +29,14 @@
     <nav id=styleguide-menu>
         <ul>
         {% for name, slug, sub_slugs in templates %}
-            {% url "styleguide_page" slug as path %}
             {% open_menu request.path slug as open_parent %}
+            {% if slug %}
+                {% url "styleguide_page" slug as path %}
+                <li class="{% if path in request.path %}selected {% endif%}{% if open_parent %}children{% endif %}">
+            {% else %}
+                {% url "styleguide" as path %}
+                <li class="{% if path == request.path %}selected {% endif%}">
+            {% endif %}
             <li class="{% if path in request.path %}selected {% endif%}{% if open_parent %}children{% endif %}">
                 <a href="{{ path }}">{{ name|make_space }}</a>
                 {% if sub_slugs %}
