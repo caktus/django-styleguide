@@ -34,6 +34,11 @@ class CreateUserForm(forms.Form):
         widget=forms.PasswordInput(
             attrs={'required': 'required', }))
 
+    def clean(self):
+        for field_name, field in self.fields.items():
+            if field_name in self._errors:
+                field.widget.attrs['errors'] = ' '.join(self._errors[field_name])
+
 create_user_form_initial = {
     "email": "tom@example.com",
 }
