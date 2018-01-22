@@ -126,6 +126,8 @@ class ExampleNode(template.Node):
             if lang != "DOCS":
                 if lang == 'HTML':
                     body = BeautifulSoup(body, 'html.parser').prettify()
+                elif lang == 'TEMPLATE':
+                    lang = 'django'
                 output.append('<h4>%s</h4>' % lang)
                 output.append('<code class=%s>' % lang)
                 lines = body.split('\n')
@@ -135,11 +137,15 @@ class ExampleNode(template.Node):
                     if lang == 'HTML':
                         indent *= 4
                     output.append('<span style="display: block; padding-left: %sch">' % indent)
+
+                    # Create hidden space characters so copy-pasting includes indents
+                    output.append('<span style="display: inline-block; overflow: hidden; width: 0.1px; height: 0.1px">' + ''.join([' ']*indent) + '</span>')
                     output.append(defaultfilters.force_escape(line_stripped) or ' ')
+                    
                     output.append('</span>')
                 output.append('</code>')
         output.append('</pre>')
-
+        
         output.append('</div>')
         output.append('<div class=styleguide-sep><span>➵</span></div>')
         output.append('<div class=styleguide-demo>')
