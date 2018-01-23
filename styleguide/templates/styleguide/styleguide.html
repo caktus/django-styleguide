@@ -29,10 +29,15 @@
     <nav id=styleguide-menu>
         <ul>
         {% for name, slug, sub_slugs in templates %}
-            {% url "styleguide_page" slug as path %}
             {% open_menu request.path slug as open_parent %}
-            <li class="{% if path in request.path %}selected {% endif%}{% if open_parent %}children{% endif %}">
-                <a href="{{ path }}">{{ name|make_space }}</a>
+            {% if slug %}
+                {% url "styleguide_page" slug as path %}
+                <li class="{% if path in request.path %}selected {% endif%}{% if open_parent %}children{% endif %}">
+            {% else %}
+                {% url "styleguide" as path %}
+                <li class="{% if path == request.path %}selected {% endif%}">
+            {% endif %}
+                <a data-frontpage="{{ frontpage_url }}" data-url="{{ request.path }}" data-path="{{ path }}" data-slug="{{ slug }}" href="{{ path }}">{{ name|make_space }}</a>
                 {% if sub_slugs %}
                     {% open_menu request.path slug sub_slugs as open %}
                     <span class="toggle-menu {% if open %}open{%endif%}"></span>
@@ -51,7 +56,7 @@
     <main>
         <div id="styleguide-content-spacer"></div>
         <div id=styleguide-content>
-            {% block styleguide_content %}{% endblock %}
+            {% block styleguide_content %}{{ contents|safe }}{% endblock %}
         </div>
     </main>
     <footer id="styleguide-footer">
