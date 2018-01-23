@@ -37,8 +37,7 @@
                 {% url "styleguide" as path %}
                 <li class="{% if path == request.path %}selected {% endif%}">
             {% endif %}
-            <li class="{% if path in request.path %}selected {% endif%}{% if open_parent %}children{% endif %}">
-                <a href="{{ path }}">{{ name|make_space }}</a>
+                <a data-frontpage="{{ frontpage_url }}" data-url="{{ request.path }}" data-path="{{ path }}" data-slug="{{ slug }}" href="{{ path }}">{{ name|make_space }}</a>
                 {% if sub_slugs %}
                     {% open_menu request.path slug sub_slugs as open %}
                     <span class="toggle-menu {% if open %}open{%endif%}"></span>
