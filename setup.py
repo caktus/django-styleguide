@@ -25,10 +25,8 @@ setup(
     ],
     install_requires=[
         'bs4',
-    ],
-    #long_description=open('README.rst').read(),
-    install_requires=[
         "markdown",
     ],
+    #long_description=open('README.rst').read(),
     zip_safe=False, # because we're including media that Django needs
 )
