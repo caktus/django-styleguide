@@ -14,7 +14,7 @@ def styleguide(request):
     else:
         contents = ""
     return render(request, "styleguide/styleguide.html", {
-        "contents": markdown.markdown(contents),
+        "contents": markdown.markdown(contents, extensions=["markdown.extensions.fenced_code"]),
     })
 
 def styleguide_page(request, name):
