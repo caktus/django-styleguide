@@ -1,9 +1,8 @@
-from textwrap import dedent, indent
+from textwrap import dedent
 
 from bs4 import BeautifulSoup
 
 from django import template
-from django.template.base import Context
 from django.template import defaultfilters
 
 from styleguide import utils
@@ -141,11 +140,11 @@ class ExampleNode(template.Node):
                     # Create hidden space characters so copy-pasting includes indents
                     output.append('<span style="display: inline-block; overflow: hidden; width: 0.1px; height: 0.1px">' + ''.join([' ']*indent) + '</span>')
                     output.append(defaultfilters.force_escape(line_stripped) or ' ')
-                    
+
                     output.append('</span>')
                 output.append('</code>')
         output.append('</pre>')
-        
+
         output.append('</div>')
         output.append('<div class=styleguide-sep><span>➵</span></div>')
         output.append('<div class=styleguide-demo>')
@@ -157,19 +156,19 @@ class ExampleNode(template.Node):
         return ''.join(output)
 
 
-@register.assignment_tag
+@register.simple_tag
 def get_styleguide_templates():
     """Return tuples of (display name, slug) for found styleguide templates"""
     templates = []
     for slug, sub_slugs in utils.get_styleguide_templates().items():
         name = defaultfilters.title(slug.replace('-', ' '))
         templates.append((name, slug, sub_slugs))
-    
+
     templates.insert(0, ("Introduction", "", []))
 
     return templates
 
-@register.assignment_tag
+@register.simple_tag
 def open_menu(path, slug, sub_slugs=None):
     path_list = list(filter(None, path.split('/')))
 
