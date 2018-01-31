@@ -165,9 +165,8 @@ def get_styleguide_templates():
         name = defaultfilters.title(slug.replace('-', ' '))
         templates.append((name, slug, sub_slugs))
     
-    templates.insert(0, ("Introduction", "", []))
-
     templates.sort()
+    templates.insert(0, ("Introduction", "", []))
 
     return templates
 
