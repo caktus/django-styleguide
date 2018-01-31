@@ -167,6 +167,8 @@ def get_styleguide_templates():
     
     templates.insert(0, ("Introduction", "", []))
 
+    templates.sort()
+
     return templates
 
 @register.assignment_tag
