@@ -87,7 +87,8 @@ class ExampleNode(template.Node):
 
         sections = utils.get_example_sections(self.raw_code)
         rendered_sections = utils.get_example_sections(code)
-
+        
+        html = None
         if 'HTML' in sections:
             html = sections['HTML']
         elif 'TEMPLATE' in rendered_sections:
@@ -96,8 +97,6 @@ class ExampleNode(template.Node):
         elif len(sections) == 0:
             html = code
             sections['HTML'] = self.raw_code
-        else:
-            raise ValueError("{% example %} must have exactly 1 or an HTML entry.")
 
         docs = sections.get('DOCS', None)
 
@@ -147,12 +146,14 @@ class ExampleNode(template.Node):
         output.append('</pre>')
         
         output.append('</div>')
-        output.append('<div class=styleguide-sep><span>➵</span></div>')
-        output.append('<div class=styleguide-demo>')
 
-        output.append(html)
+        if html:
+            output.append('<div class=styleguide-sep><span>➵</span></div>')
+            output.append('<div class=styleguide-demo>')
 
-        output.append('</div></div>')
+            output.append(html)
+
+            output.append('</div></div>')
 
         return ''.join(output)
 
