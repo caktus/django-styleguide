@@ -1,5 +1,7 @@
 import os
 import re
+from collections import OrderedDict
+
 from django import template
 
 
@@ -49,7 +51,7 @@ def get_example_sections(example):
     del parts[0]
     i = iter(parts)
 
-    sections = {}
+    sections = OrderedDict()
     for lang, code in zip(i, i):
         sections[lang] = code.strip()
         # assert lang != 'TEMPLATE', example
