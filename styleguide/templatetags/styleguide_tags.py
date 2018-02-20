@@ -153,8 +153,9 @@ class ExampleNode(template.Node):
 
             output.append(html)
 
-            output.append('</div></div>')
+            output.append('</div>')
 
+        output.append('</div>')
         return ''.join(output)
 
 
