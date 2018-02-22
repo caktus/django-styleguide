@@ -13,6 +13,7 @@ class EverythingBagelForm(forms.Form):
     select = forms.ChoiceField(choices=[('',  "Select an Option"), (1, 'one'), (2, 'two'), (3, 'three')])
     radio = forms.ChoiceField(choices=[(1, 'one'), (2, 'two'), (3, 'three')], widget=forms.RadioSelect())
     file = forms.FileField(label='Upload Your Photo')
+    search = forms.CharField(label='Search', widget=forms.TextInput(attrs={'placeholder':'Search'}))
 
 everything_bagel_form_initial = {
     "text": "",
