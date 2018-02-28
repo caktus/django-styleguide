@@ -20,10 +20,11 @@ def do_example(parser, token):
         list(parser.tokens),
         {},
         {},
-        list(parser.command_stack),
+        parser.origin,
     )
     parser_copy.tags = dict(parser.tags)
     parser_copy.filters = dict(parser.filters)
+    parser_copy.command_stack = list(parser.command_stack)
 
     args = token.split_contents()[1:]
     args = list(args)
