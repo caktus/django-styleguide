@@ -1,9 +1,9 @@
-from textwrap import dedent, indent
+# coding: utf-8
+from textwrap import dedent
 
 from bs4 import BeautifulSoup
 
 from django import template
-from django.template.base import Context
 from django.template import defaultfilters
 
 from styleguide import utils
@@ -25,7 +25,7 @@ def do_example(parser, token):
     parser_copy.tags = dict(parser.tags)
     parser_copy.filters = dict(parser.filters)
 
-    tag_name, *args = token.split_contents()
+    args = token.split_contents()[1:]
     args = list(args)
     kwargs = {}
 
@@ -87,7 +87,7 @@ class ExampleNode(template.Node):
 
         sections = utils.get_example_sections(self.raw_code)
         rendered_sections = utils.get_example_sections(code)
-        
+
         html = None
         if 'HTML' in sections:
             html = sections['HTML']
@@ -140,11 +140,11 @@ class ExampleNode(template.Node):
                     # Create hidden space characters so copy-pasting includes indents
                     output.append('<span style="display: inline-block; overflow: hidden; width: 0.1px; height: 0.1px">' + ''.join([' ']*indent) + '</span>')
                     output.append(defaultfilters.force_escape(line_stripped) or ' ')
-                    
+
                     output.append('</span>')
                 output.append('</code>')
         output.append('</pre>')
-        
+
         output.append('</div>')
 
         if html:
@@ -166,7 +166,7 @@ def get_styleguide_templates():
     for slug, sub_slugs in utils.get_styleguide_templates().items():
         name = defaultfilters.title(slug.replace('-', ' '))
         templates.append((name, slug, sub_slugs))
-    
+
     templates.sort()
     templates.insert(0, ("Introduction", "", []))
 
