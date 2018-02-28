@@ -3,7 +3,9 @@ from django import forms
 class EverythingBagelForm(forms.Form):
     text = forms.CharField(label='Username')
     password = forms.CharField(widget=forms.PasswordInput())
-    disabled_text = forms.CharField(disabled=True)
+    disabled_text = forms.CharField(
+        widget=forms.TextInput(attrs={'disabled': 'disabled'})
+    )
     readonly_text = forms.CharField(
         widget=forms.TextInput(attrs={'readonly':'readonly'})
     )
