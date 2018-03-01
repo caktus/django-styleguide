@@ -1,3 +1,7 @@
+1.2.4 Released March 1, 2018
+
+* Added fixes for Django 1.8 and Python 2.7 compatibility
+
 1.2.1 Released September 7, 2017
 --------------------------------
 
