@@ -1,4 +1,10 @@
+1.2.5 Released March 2, 2018
+----------------------------
+
+* Added encoding fix for Python 2.7 compatibility
+
 1.2.4 Released March 1, 2018
+----------------------------
 
 * Added fixes for Django 1.8 and Python 2.7 compatibility
 
