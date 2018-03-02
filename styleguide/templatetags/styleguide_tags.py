@@ -102,24 +102,24 @@ class ExampleNode(template.Node):
         docs = sections.get('DOCS', None)
 
         if header or status:
-            output.append('<h4 class="%s">%s</h4>' % (
-                (' styleguide-status-'+status if status else ''),
+            output.append(u'<h4 class="%s">%s</h4>' % (
+                (u' styleguide-status-'+status if status else ''),
                 header,
             ))
         classes = ['styleguide-example']
         if wide:
             classes.append('styleguide-example-wide')
         classes = ' '.join(classes)
-        output.append('<div class="%s">' % classes)
+        output.append(u'<div class="%s">' % classes)
 
         if docs:
-            output.append('<div class=styleguide-docs>')
+            output.append(u'<div class=styleguide-docs>')
             output.append(docs)
-            output.append('</div>')
+            output.append(u'</div>')
 
-        output.append('<div class=styleguide-code>')
+        output.append(u'<div class=styleguide-code>')
 
-        output.append('<pre>')
+        output.append(u'<pre>')
         parts = sorted(sections.items(), key=lambda t:-1 if t[0]=='TEMPLATE' else 0)
         # assert 0, parts
         for lang, body in parts:
@@ -128,36 +128,36 @@ class ExampleNode(template.Node):
                     body = BeautifulSoup(body, 'html.parser').prettify()
                 elif lang == 'TEMPLATE':
                     lang = 'django'
-                output.append('<h4>%s</h4>' % lang)
-                output.append('<code class=%s>' % lang)
+                output.append(u'<h4>%s</h4>' % lang)
+                output.append(u'<code class=%s>' % lang)
                 lines = body.split('\n')
                 for line in lines:
                     line_stripped = line.strip(' ')
                     indent = len(line) - len(line_stripped)
                     if lang == 'HTML':
                         indent *= 4
-                    output.append('<span style="display: block; padding-left: %sch">' % indent)
+                    output.append(u'<span style="display: block; padding-left: %sch">' % indent)
 
                     # Create hidden space characters so copy-pasting includes indents
-                    output.append('<span style="display: inline-block; overflow: hidden; width: 0.1px; height: 0.1px">' + ''.join([' ']*indent) + '</span>')
+                    output.append(u'<span style="display: inline-block; overflow: hidden; width: 0.1px; height: 0.1px">' + ''.join([' ']*indent) + '</span>')
                     output.append(defaultfilters.force_escape(line_stripped) or ' ')
 
-                    output.append('</span>')
-                output.append('</code>')
-        output.append('</pre>')
+                    output.append(u'</span>')
+                output.append(u'</code>')
+        output.append(u'</pre>')
 
-        output.append('</div>')
+        output.append(u'</div>')
 
         if html:
-            output.append('<div class=styleguide-sep><span>➵</span></div>')
-            output.append('<div class=styleguide-demo>')
+            output.append(u'<div class=styleguide-sep><span>➵</span></div>')
+            output.append(u'<div class=styleguide-demo>')
 
             output.append(html)
 
-            output.append('</div>')
+            output.append(u'</div>')
 
-        output.append('</div>')
-        return ''.join(output)
+        output.append(u'</div>')
+        return u''.join(output)
 
 
 @register.assignment_tag
