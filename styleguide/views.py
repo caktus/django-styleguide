@@ -15,15 +15,21 @@ def styleguide(request):
         contents = ""
     return render(request, "styleguide/styleguide.html", {
         "contents": markdown.markdown(contents, extensions=["markdown.extensions.fenced_code"]),
+        "styleguide_page": None,
+        "styleguide_subpage": None,
     })
 
 def styleguide_page(request, name):
     return render(request, "styleguide/styleguide-%s.html" % name, {
         "everything_bagel_form": EverythingBagelForm(initial=everything_bagel_form_initial),
         "create_user_form": CreateUserForm(initial=create_user_form_initial),
+        "styleguide_page": name,
+        "styleguide_subpage": None,
     })
 def styleguide_sub_page(request, name, sub_page):
     return render(request, "styleguide/styleguide-%s-%s.html" % (name, sub_page), {
         "everything_bagel_form": EverythingBagelForm(initial=everything_bagel_form_initial),
         "create_user_form": CreateUserForm(initial=create_user_form_initial),
+        "styleguide_page": name,
+        "styleguide_subpage": sub_page,
     })
