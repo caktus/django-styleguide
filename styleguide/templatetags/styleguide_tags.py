@@ -10,9 +10,10 @@ from styleguide import utils
 
 
 register = template.Library()
+register_tag = register.assignment_tag if hasattr(register, 'assignment_tag') else register.simple_tag
 
 
-@register.tag(name="example")
+@register_tag
 def do_example(parser, token):
     # Copy the parser, because we need to consume the tokens from it *twice*
     # once for a verbatim copy and once for a renderable copy
@@ -160,7 +161,7 @@ class ExampleNode(template.Node):
         return u''.join(output)
 
 
-@register.assignment_tag
+@register_tag
 def get_styleguide_templates():
     """Return tuples of (display name, slug) for found styleguide templates"""
     templates = []
@@ -173,7 +174,7 @@ def get_styleguide_templates():
 
     return templates
 
-@register.assignment_tag
+@register_tag
 def open_menu(path, slug, sub_slugs=None):
     path_list = list(filter(None, path.split('/')))
 
