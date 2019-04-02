@@ -1,3 +1,9 @@
+1.3.0 Released April 2, 2019
+----------------------------
+
+* Added support for Django 1.11, 2.0, 2.1, 2.2
+* Dropped support for Django <1.11 (though it may still work)
+
 1.2.5 Released March 2, 2018
 ----------------------------
 

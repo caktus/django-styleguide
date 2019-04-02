@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='django-styleguide',
-    version='1.2.5',
+    version='1.3.0',
     author='Caktus Consulting Group',
     author_email='solutions@caktusgroup.com',
     packages=find_packages(exclude=['sample_project']),
@@ -18,7 +18,7 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.7',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Development Status :: 4 - Beta',
         'Operating System :: OS Independent',
